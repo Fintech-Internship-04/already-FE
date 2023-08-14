@@ -6,15 +6,15 @@ import AppContainer from '@/components/common/AppContainer';
 import Navbar from '@/components/common/NavBar';
 import Header from '@/components/home/Header';
 
-const MyInfo = () => {
+const Collection = () => {
   return (
     <AppContainer>
       <Header mt={7} />
       <Box h={16} />
-      마이페이지
-      <Navbar currentTab="MyInfo" />
+      활동내역
+      <Navbar currentTab="Collection" />
     </AppContainer>
   );
 };
 
-export default MyInfo;
+export default Collection;
