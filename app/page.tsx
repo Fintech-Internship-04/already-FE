@@ -1,96 +1,59 @@
-import React from 'react';
+'use client';
 
-import Image from 'next/image';
+import React, { useState } from 'react';
 
-import styles from './page.module.css';
+import { Box, Flex, Text, Switch, Grid, Stack } from '@chakra-ui/react';
 
-export default function Home() {
+import AppContainer from '@/components/common/AppContainer';
+import Navbar from '@/components/common/NavBar';
+import BlueTooth from '@/components/home/BlueTooth';
+import CreateButton from '@/components/home/CreateButton';
+import GroupCard from '@/components/home/GroupCard';
+import Header from '@/components/home/Header';
+
+const Home = () => {
+  const [isClickOn, setIsClickOn] = useState(false);
+  const group = [
+    { groupName: 'test1', groupInfo: '정윤아 님 외 6명' },
+    { groupName: 'test1', groupInfo: '정윤아 님 외 6명' },
+    { groupName: 'test1', groupInfo: '정윤아 님 외 6명' },
+    { groupName: 'test1', groupInfo: '정윤아 님 외 6명' },
+    { groupName: 'test1', groupInfo: '정윤아 님 외 6명' },
+  ];
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
-        </a>
-      </div>
-    </main>
+    <AppContainer>
+      <Header mt={7} />
+      <Box mt={10} />
+      <BlueTooth isOn={isClickOn} handleClick={() => setIsClickOn(!isClickOn)} />
+      <Box mt={'17px'} />
+      <CreateButton />
+      <Flex mt={'36px'} justify={'space-between'}>
+        <Text fontSize={'18px'} fontWeight={'600'}>
+          정산 모임 선택
+        </Text>
+        <Flex align={'center'}>
+          <Text mr={1} fontSize={'13px'} fontWeight={'400'} color={'#ADA4A5'}>
+            모임 결제 활성화
+          </Text>
+          <Switch colorScheme="pink" size={'lg'} />
+        </Flex>
+      </Flex>
+      <Stack gap={'10px'} mt={2} p={5} bg={'#F7F8F8'} borderRadius={'14px'}>
+        <Text fontSize={'15px'} fontWeight={'400'} textAlign={'center'}>
+          내 모임 리스트
+        </Text>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+          {group.map((el) => {
+            return (
+              <GroupCard key={el.groupName} groupName={el.groupName} groupInfo={el.groupInfo} />
+            );
+          })}
+        </Grid>
+      </Stack>
+      <Box h={16} />
+      <Navbar />
+    </AppContainer>
   );
-}
+};
+
+export default Home;
