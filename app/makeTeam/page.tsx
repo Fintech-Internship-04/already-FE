@@ -45,6 +45,9 @@ const MakeTeam = () => {
     { name: '이은비', userCode: 'abcdefgh' },
     { name: '이은비', userCode: 'abcdefgh' },
     { name: '이은비', userCode: 'abcdefgh' },
+    { name: '이은비', userCode: 'abcdefgh' },
+    { name: '이은비', userCode: 'abcdefgh' },
+    { name: '이은비', userCode: 'abcdefgh' },
   ];
 
   const dummyList2 = [
@@ -71,6 +74,7 @@ const MakeTeam = () => {
           pl={10}
           pr={10}
           fontStyle={'body3'}
+          overflow="auto"
         >
           {dummyList.map((item, index) => (
             <Flex
@@ -99,10 +103,12 @@ const MakeTeam = () => {
         <Flex
           flexDir={'column'}
           w={'330px'}
-          h={'390px'}
           borderRadius={'8px'}
           bg={'#EDF2F7'}
           p={2}
+          pb={4}
+          pt={4}
+          mb={4}
           gap={5}
           alignItems={'center'}
           justifyContent={'center'}
