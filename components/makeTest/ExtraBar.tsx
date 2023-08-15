@@ -32,7 +32,6 @@ const ExtraBar = () => {
         <AddIcon bg={'#9DCEFF'} p={1} color={'white'} borderRadius={5} />
         <MinusIcon bg={'#F28F8F'} p={1} color={'white'} borderRadius={5} />
       </Flex>
-
       <Text textStyle={'body2'}>총 0 명</Text>
     </Flex>
   );
