@@ -60,7 +60,7 @@ const MakeTeam = () => {
     <AppContainer>
       <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} gap={'25px'}>
         <BackBar title={'모임 생성'} />
-        <InputBar icon={<SearchIcon color="gray.300" />} placeholder="친구 찾기" />
+        <InputBar icon={<SearchIcon color="gray.300" />} placeholder="" />
         <Box
           w={330}
           h={262}
@@ -70,6 +70,7 @@ const MakeTeam = () => {
           pb={7}
           pl={10}
           pr={10}
+          fontStyle={'body3'}
         >
           {dummyList.map((item, index) => (
             <Flex
@@ -98,14 +99,15 @@ const MakeTeam = () => {
         <Flex
           flexDir={'column'}
           w={'330px'}
-          h={'380px'}
+          h={'390px'}
           borderRadius={'8px'}
           bg={'#EDF2F7'}
           p={2}
           gap={5}
           alignItems={'center'}
+          justifyContent={'center'}
         >
-          <InputBar icon={<EditIcon color="gray.300" />} placeholder="모임 이름 입력" />
+          <InputBar icon={<EditIcon color="gray.300" />} placeholder="모임 이름" />
 
           <Grid templateColumns="repeat(2, 1fr)" gap={4}>
             {dummyList2.map((item, index) => (
