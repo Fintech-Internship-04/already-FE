@@ -10,7 +10,7 @@ export const theme = extendTheme({
   },
   textStyles: {
     headline1: {
-      fontFamily: 'Pretendard',
+      fontFamily: 'Nunito',
       fontSize: '24px',
       fontWeight: 'semibold',
       lineHeight: '32px',
@@ -33,7 +33,7 @@ export const theme = extendTheme({
     subtitle2: {
       fontFamily: 'Pretendard',
       fontSize: '16px',
-      fontWeight: 'semibold',
+      fontWeight: '600',
       lineHeight: '20px',
       letterSpacing: '0',
     },
@@ -60,7 +60,7 @@ export const theme = extendTheme({
     },
     caption1: {
       fontFamily: 'Nunito',
-      fontSize: '12px',
+      fontSize: '11px',
       fontWeight: '400',
       lineHeight: '18px',
       letterSpacing: '0',
