@@ -14,22 +14,26 @@ const MemeberCard: React.FC<MemberCardProps & FlexProps> = ({
     <Flex
       borderRadius={'10px'}
       align={'center'}
+      justify={icon ? 'space-between' : ''}
       w={icon ? '260px' : '130px'}
-      px={icon ? 2 : 5}
+      px={icon ? 3 : 5}
+      pr={icon ? 5 : ''}
       py={3}
       bg={'#FFF'}
       {...props}
     >
-      <AvatarIcon />
-      <Box ml={3}>
-        <Text textStyle={'subtitle2'}>name1</Text>
-        {userCode && (
-          <Text color={'#ADA4A5'} textStyle={'caption1'}>
-            {userCode}
-          </Text>
-        )}
-        {icon && icon}
-      </Box>
+      <Flex align={'center'}>
+        <AvatarIcon />
+        <Box ml={3}>
+          <Text textStyle={'subtitle2'}>name1</Text>
+          {userCode && (
+            <Text color={'#ADA4A5'} textStyle={'caption1'}>
+              {userCode}
+            </Text>
+          )}
+        </Box>
+      </Flex>
+      {icon && icon}
     </Flex>
   );
 };
