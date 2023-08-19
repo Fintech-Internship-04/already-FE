@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import { Box, Flex, Text, Switch, Grid, Stack } from '@chakra-ui/react';
 
+import authApis from '@/api/authentication';
 import AppContainer from '@/components/common/AppContainer';
 import Navbar from '@/components/common/NavBar';
 import BlueTooth from '@/components/home/BlueTooth';
@@ -13,6 +14,12 @@ import Header from '@/components/home/Header';
 
 const Home = () => {
   const [isClickOn, setIsClickOn] = useState(false);
+  async function fetchUserList() {
+    const response = await authApis.login({ id: 'test1', password: 'test1' });
+    console.log(response);
+  }
+
+  // Call the function
   const group = [
     { groupName: 'test1', groupInfo: '정윤아 님 외 6명' },
     { groupName: 'test1', groupInfo: '정윤아 님 외 6명' },
@@ -28,7 +35,7 @@ const Home = () => {
       <Box mt={'17px'} />
       <CreateButton />
       <Flex mt={'36px'} justify={'space-between'}>
-        <Text fontSize={'18px'} fontWeight={'600'}>
+        <Text fontSize={'18px'} fontWeight={'600'} onClick={fetchUserList}>
           정산 모임 선택
         </Text>
         <Flex align={'center'}>
