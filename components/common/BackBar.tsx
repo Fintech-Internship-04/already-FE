@@ -2,6 +2,9 @@ import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { Flex } from '@chakra-ui/react';
 
 const BackBar = ({ title }) => {
+  const goBack = () => {
+    window.history.back(); // 뒤로가기-
+  };
   return (
     <Flex
       flexDir={'row'}
@@ -12,7 +15,10 @@ const BackBar = ({ title }) => {
       textStyle={'headline2'}
       gap={'100px'}
     >
-      <ChevronLeftIcon />
+      <button onClick={goBack}>
+        <ChevronLeftIcon />
+      </button>
+
       {title}
     </Flex>
   );
