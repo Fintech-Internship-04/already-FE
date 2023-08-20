@@ -24,8 +24,7 @@ const Login = () => {
       if (typeof window !== 'undefined') {
         window.localStorage.setItem('currentUserName', response.data?.data.user_name);
         window.localStorage.setItem('currentUserCode', response.data?.data.user_code);
-        // router.push('/enrollAccount');
-        router.push('/');
+        router.push('/enrollAccount');
       }
     } else {
       setHasError(true);
