@@ -59,6 +59,7 @@ const MyButton = ({
         alignItems: 'center',
       }}
       onClick={onClick}
+      // disabled={true}
     >
       {text}
     </button>

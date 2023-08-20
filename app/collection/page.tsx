@@ -1,6 +1,8 @@
 'use client';
 import { Text, Flex } from '@chakra-ui/react';
 
+import { Text, Flex } from '@chakra-ui/react';
+
 import AlertCard from '@/components/common/AlertCard';
 import AppContainer from '@/components/common/AppContainer';
 import BackBar from '@/components/common/BackBar';
@@ -14,16 +16,39 @@ const Collection = () => {
       <BackBar title={'활동내역'} />
       <BackGroundCard>
         <Flex flexDir="column">
-          <Text textStyle={'headlin1'} mb={'15px'}>
-            Today
-          </Text>
-          <AlertCard />
-          <Divider mt={'20px'} mb={'20px'} />
+          <Text mb={'15px'}>Today</Text>
           <Flex flexDir={'column'} gap={'20px'}>
-            <AlertCard type="PaymentRequest" />
-            <AlertCard type="PaymentRequest" />
-            <AlertCard type="PaymentRequest" />
+            {/* case3 */}
+            <AlertCard
+              type="PaymentFail"
+              time="3분전"
+              groupName="4조"
+              member="최지갑님"
+              groupNum="3"
+            />
+            <AlertCard time="3분전" groupName="4조" member="최지갑님" groupNum="3" />
+
+            {/* case2 */}
+            <AlertCard
+              type="PaymentRequest"
+              time="4분전"
+              groupName="냐미모임"
+              member="김의찬님"
+              groupNum="7"
+            />
+            <AlertCard time="4분전" groupName="냐미모임" member="김의찬님" groupNum="7" />
+
+            {/* case1 */}
+            <AlertCard
+              type="PaymentRequest"
+              time="5분전"
+              groupName="냠냠모임"
+              member="이참치님"
+              groupNum="5"
+            />
+            <AlertCard time="3분전" groupName="4조" member="최지갑님" groupNum="3" />
           </Flex>
+          <Divider mt={'20px'} mb={'20px'} />
         </Flex>
       </BackGroundCard>
       <Navbar currentTab="Collection" />
