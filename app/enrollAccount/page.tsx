@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Box, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
@@ -17,7 +17,7 @@ import PhoneCallIcon from '@/components/icons/PhoneCallIcon';
 
 const EnrollAccount = () => {
   const [inputValues, setInputValues] = useState<any>({});
-  const userCode = localStorage.getItem('currentUserCode');
+  const [userCode, setUserCode] = useState<any>('');
   console.log({
     account_num: inputValues.account_num,
     bank_name: inputValues.bank_name,
@@ -46,6 +46,9 @@ const EnrollAccount = () => {
       title: 'phone_number',
     },
   ];
+  useEffect(() => {
+    setUserCode(localStorage.getItem('currentUserCode'));
+  }, []);
   return (
     <AppContainer>
       <Stack gap={9} mt={'90px'} align={'center'}>

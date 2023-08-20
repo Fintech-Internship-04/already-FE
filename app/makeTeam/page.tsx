@@ -63,9 +63,15 @@ const MakeTeam = () => {
   const [allUsers, setAllUsers] = useState<any>([]);
   const router = useRouter();
   const createGroup = async () => {
+    console.log({
+      group_name: groupName,
+      user_code: currentUser.user_code,
+      headcount: headCount,
+      user_list: memberList,
+    });
     const response = await groupApis.createGroup({
       group_name: groupName,
-      owner_code: currentUser.user_code,
+      user_code: currentUser.user_code,
       headcount: headCount,
       user_list: memberList,
     });
@@ -79,7 +85,7 @@ const MakeTeam = () => {
     setUserInput(e.target.value);
   };
   const addMemeber = (usercode: string, username: string) => {
-    setMemberList((prev: any) => [...prev, { user_code: usercode, user_name: username }]);
+    setMemberList((prev: any) => [...prev, { user_code: username, user_id: usercode }]);
     setHeadCount((prev) => (prev += 1));
   };
   const searchAPI = async (keyword: string) => {
@@ -117,8 +123,8 @@ const MakeTeam = () => {
 
   useEffect(() => {
     setCurrentUser({
-      user_name: localStorage.getItem('currentUserName'),
-      user_code: localStorage.getItem('currentUserCode'),
+      user_name: window.localStorage.getItem('currentUserName'),
+      user_code: window.localStorage.getItem('currentUserCode'),
     });
     const fetchMembers = async () => {
       const response = await memberApis.getButtonMembers();

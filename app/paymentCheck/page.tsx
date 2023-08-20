@@ -4,14 +4,8 @@ import { Box, Flex, Stack, Text } from '@chakra-ui/react';
 
 import AppContainer from '@/components/common/AppContainer';
 import BackGroundCard from '@/components/common/BackGroundCard';
-import Divider from '@/components/common/Divider';
-import MemeberCard from '@/components/common/MemberCard';
-import CloseIcon from '@/components/icons/CloseIcon';
-import GroupFourIcon from '@/components/icons/GroupFourIcon';
-import RightArrowIcon from '@/components/icons/RightArrowIcon';
-
 import MyButton from '@/components/common/MyButton';
-import PaymentIcon from '@/components/icons/PaymentIcon';
+import CloseIcon from '@/components/icons/CloseIcon';
 import GreenCheckIcon from '@/components/icons/GreenCheckIcon';
 
 const PaymentCheck = () => {

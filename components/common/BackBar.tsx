@@ -1,7 +1,9 @@
 import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { Flex } from '@chakra-ui/react';
-
-const BackBar = ({ title }) => {
+type BackBarProps = {
+  title: string;
+};
+const BackBar: React.FC<BackBarProps> = ({ title }) => {
   const goBack = () => {
     window.history.back(); // 뒤로가기-
   };
