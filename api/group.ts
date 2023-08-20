@@ -29,6 +29,18 @@ const groupApis = {
     const response = await client.get(`${PATH}group/getMemberListFromGroup/${groupCode}`);
     return response;
   }),
+  acceptGroup: methodFormat(async (data) => {
+    const response = await client.post(`${PATH}group/acceptInvite`, data);
+    return response;
+  }),
+  doPay: methodFormat(async (data) => {
+    const response = await client.post(`${PATH}account/checkIsRequest`, data);
+    return response;
+  }),
+  calculatePayment: methodFormat(async (userCode) => {
+    const response = await client.post(`${PATH}user/checkIsTaken/${userCode}`);
+    return response;
+  }),
 };
 
 export default groupApis;

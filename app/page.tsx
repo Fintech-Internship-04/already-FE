@@ -7,6 +7,7 @@ import { Box, Flex, Text, Switch, Grid, Stack, useDisclosure } from '@chakra-ui/
 import { useRouter } from 'next/navigation';
 
 import groupApis from '@/api/group';
+import memberApis from '@/api/member';
 import AppContainer from '@/components/common/AppContainer';
 import ModalCard from '@/components/common/Modal';
 import Navbar from '@/components/common/NavBar';
@@ -14,8 +15,8 @@ import BlueTooth from '@/components/home/BlueTooth';
 import CreateButton from '@/components/home/CreateButton';
 import GroupCard from '@/components/home/GroupCard';
 import Header from '@/components/home/Header';
-
-import TeamAccept from './teamaccept/page';
+import PaymentAccept from '@/components/home/PaymentAccept';
+import TeamAccept from '@/components/home/TeamAccept';
 
 const Home = () => {
   const [isClickOn, setIsClickOn] = useState(false);
@@ -23,23 +24,28 @@ const Home = () => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupId, setGroupId] = useState<number>(0);
+  const [isInvite, setIsInvite] = useState(true);
+  const [userCode, setUserCode] = useState<any>('');
   const handleRouter = () => {
     router.push('/makeTeam');
   };
   useEffect(() => {
-    const userCode = window.localStorage.getItem('currentUserCode');
-
-    if (!userCode) {
+    setUserCode(Number(localStorage.getItem('currentUserCode')));
+    console.log(userCode);
+    if (!localStorage.getItem('currentUserCode')) {
       router.push('/login');
     }
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await groupApis.checkInvite(3);
+        const response = await groupApis.checkInvite(
+          Number(localStorage.getItem('currentUserCode')),
+        );
         console.log('isInvited', response);
         if (response.data) {
           if (response.data.data[0].is_invited) {
             setGroupId(response.data.data[0].invited_from);
+            setIsInvite(true);
             onOpen();
           }
         }
@@ -47,18 +53,35 @@ const Home = () => {
         console.error('Error fetching data:', error);
       }
     };
-
+    const fetchPay = async () => {
+      const response = await memberApis.getIsRequest(
+        Number(localStorage.getItem('currentUserCode')),
+      );
+      // isRequest가 1인지 판단해서 알림을 띄워줄거임
+      console.log('is1', response);
+      if (response.data) {
+        if (response.data.data) {
+          onOpen();
+          setIsInvite(false);
+        }
+      }
+    };
     // Fetch the data immediately upon mounting
     fetchData();
-    fetchGroupList();
+    fetchPay();
+    fetchGroupList(Number(localStorage.getItem('currentUserCode')));
     // Set an interval to fetch the data every second
     const intervalId = setInterval(fetchData, 2000);
+    const intervalId2 = setInterval(fetchPay, 2000);
 
     // Clear the interval when the component is unmounted
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+      clearInterval(intervalId2);
+    };
   }, []); //
-  const fetchGroupList = async () => {
-    const response = await groupApis.getGroupList(19);
+  const fetchGroupList = async (userCode: number) => {
+    const response = await groupApis.getGroupList(userCode);
     if (response.data) {
       setGroupList(response.data.data);
     }
@@ -89,15 +112,32 @@ const Home = () => {
           내 모임 리스트
         </Text>
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-          {groupList.map((el: { group_name: any; groupInfo: string }) => {
-            return (
-              <GroupCard key={el.group_name} groupName={el.group_name} groupInfo={el.groupInfo} />
-            );
-          })}
+          {groupList.map(
+            (el: { group_name: any; groupInfo: string; headcount: number; group_code: number }) => {
+              return (
+                <GroupCard
+                  onClick={() => router.push(`/teamInfo/${el.group_code}`)}
+                  key={el.group_name}
+                  headCount={el.headcount}
+                  groupName={el.group_name}
+                />
+              );
+            },
+          )}
         </Grid>
       </Stack>
       <Box h={16} />
-      <ModalCard content={<TeamAccept groupId={groupId} />} isOpen={isOpen} onClose={onClose} />
+      <ModalCard
+        content={
+          isInvite ? (
+            <TeamAccept groupId={groupId} onClose={onClose} />
+          ) : (
+            <PaymentAccept onClose={onClose} />
+          )
+        }
+        isOpen={isOpen}
+        onClose={onClose}
+      />
       <Navbar />
     </AppContainer>
   );

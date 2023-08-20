@@ -259,8 +259,8 @@ const MakeTeam = () => {
             {memberList.map((item: any, index: number) => (
               <ProfileTag
                 key={index}
-                name={item.user_code}
-                userCode={item.user_name}
+                name={item.user_id}
+                userCode={item.user_code}
                 handleChange={() => setHeadCount((prev) => (prev -= 1))}
               />
             ))}

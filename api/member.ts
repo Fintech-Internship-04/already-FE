@@ -17,6 +17,10 @@ const memberApis = {
     const response = await client.get(`${PATH}user/getUserList2`);
     return response;
   }),
+  getIsRequest: methodFormat(async (userCode) => {
+    const response = await client.get(`${PATH}user/getIsRequest/${userCode}`);
+    return response;
+  }),
 };
 
 export default memberApis;

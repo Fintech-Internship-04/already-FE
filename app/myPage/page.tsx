@@ -12,10 +12,10 @@ import Navbar from '@/components/common/NavBar';
 import Logo from '@/components/icons/Logo';
 
 const MyInfo = () => {
-  const [name, setName] = useState('이름');
+  const [name, setName] = useState<any>('이름');
   const [id, setId] = useState('아이디');
   const [phoneNum, setPhoneNum] = useState('');
-  const [userCode, setUserCode] = useState('유저코드');
+  const [userCode, setUserCode] = useState<any>('유저코드');
   const [account, setAccount] = useState(['1', '2', '3']);
 
   const router = useRouter();

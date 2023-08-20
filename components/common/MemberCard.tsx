@@ -4,10 +4,12 @@ import AvatarIcon from '../icons/AvatarIcon';
 type MemberCardProps = {
   icon?: React.ReactNode | undefined;
   userCode?: string;
+  userName?: string;
 };
 const MemeberCard: React.FC<MemberCardProps & FlexProps> = ({
   icon = '',
   userCode = '',
+  userName = '',
   ...props
 }) => {
   return (
@@ -16,6 +18,7 @@ const MemeberCard: React.FC<MemberCardProps & FlexProps> = ({
       align={'center'}
       justify={icon ? 'space-between' : ''}
       w={icon ? '260px' : '130px'}
+      h={'50px'}
       px={icon ? 3 : 5}
       pr={icon ? 5 : ''}
       py={3}
@@ -25,7 +28,7 @@ const MemeberCard: React.FC<MemberCardProps & FlexProps> = ({
       <Flex align={'center'}>
         <AvatarIcon />
         <Box ml={3}>
-          <Text textStyle={'subtitle2'}>name1</Text>
+          <Text textStyle={'subtitle2'}>{userName}</Text>
           {userCode && (
             <Text color={'#ADA4A5'} textStyle={'caption1'}>
               {userCode}

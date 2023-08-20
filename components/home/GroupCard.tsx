@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Flex, Text } from '@chakra-ui/react';
 
 import GroupIcon from '../icons/GroupIcon';
 
 type GroupCardType = {
   groupName: string;
-  groupInfo: string;
+  onClick: any;
+  headCount: number;
 };
-const GroupCard: React.FC<GroupCardType> = ({ groupName, groupInfo }) => {
+const GroupCard: React.FC<GroupCardType> = ({ groupName, headCount, onClick }) => {
   return (
     <Flex
       direction={'column'}
@@ -14,6 +16,7 @@ const GroupCard: React.FC<GroupCardType> = ({ groupName, groupInfo }) => {
       p={'18px 21px'}
       backgroundColor={'#E2E9F3'}
       justify={'space-between'}
+      onClick={onClick}
     >
       <Flex>
         <GroupIcon />
@@ -22,7 +25,7 @@ const GroupCard: React.FC<GroupCardType> = ({ groupName, groupInfo }) => {
         </Text>
       </Flex>
       <Text mt={9} fontSize={'12px'} fontWeight={'500'}>
-        {groupInfo}
+        총 {headCount} 명
       </Text>
     </Flex>
   );
