@@ -26,6 +26,10 @@ const MyButton = ({ size = 'M', color = 'default', text, onClick }) => {
         return {
           background: 'linear-gradient(317deg, #F28F8F 0%, #FFC9C0 100%)',
         };
+      case 'disabled':
+        return {
+          background: '#ADA4A5',
+        };
       default:
         return {
           background: 'linear-gradient(317deg, #92A3FD 0%, #9DCEFF 100%)',

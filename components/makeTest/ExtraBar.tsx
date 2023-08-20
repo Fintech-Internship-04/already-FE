@@ -1,14 +1,17 @@
-import { Box, Flex, Text, Button } from '@chakra-ui/react';
-import InputBar from '../../components/common/InputBar';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from 'react';
 
-import AppContainer from '@/components/common/AppContainer';
-import { SearchIcon, SmallAddIcon, EditIcon, SmallCloseIcon } from '@chakra-ui/icons';
-import { Avatar, Tag, TagLabel } from '@chakra-ui/react';
-import LogoSmall from '@/components/icons/LogoSmall';
-import { Nunito } from 'next/font/google';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
+import { Box, Flex, Text } from '@chakra-ui/react';
 
-const ExtraBar = () => {
+import LogoSmall from '@/components/icons/LogoSmall';
+
+type ExtraBarProps = {
+  headCount: number;
+  setHeadCount: any;
+};
+const ExtraBar: React.FC<ExtraBarProps> = ({ headCount, setHeadCount }) => {
+  const [extraUser, setExtraUser] = useState(0);
   return (
     <Flex
       flexDir={'row'}
@@ -26,13 +29,29 @@ const ExtraBar = () => {
         를<br />안 쓰는 친구가 있어요
       </Box>
 
-      <Text textStyle={'body2'}>0 명</Text>
+      <Text textStyle={'body2'}>{extraUser} 명</Text>
 
       <Flex flexDir={'column'} gap={1}>
-        <AddIcon bg={'#9DCEFF'} p={1} color={'white'} borderRadius={5} />
-        <MinusIcon bg={'#F28F8F'} p={1} color={'white'} borderRadius={5} />
+        <Box
+          onClick={() => {
+            setExtraUser((prev) => prev + 1);
+            setHeadCount((prev: number) => prev + 1);
+          }}
+        >
+          <AddIcon bg={'#9DCEFF'} p={1} color={'white'} borderRadius={5} />
+        </Box>
+        <Box
+          onClick={() => {
+            if (extraUser && headCount) {
+              setExtraUser((prev) => prev - 1);
+              setHeadCount((prev: number) => prev - 1);
+            }
+          }}
+        >
+          <MinusIcon bg={'#F28F8F'} p={1} color={'white'} borderRadius={5} />
+        </Box>
       </Flex>
-      <Text textStyle={'body2'}>총 0 명</Text>
+      <Text textStyle={'body2'}>총 {headCount} 명</Text>
     </Flex>
   );
 };
