@@ -76,6 +76,9 @@ const CheckTeamFail = ({ params }: { params: { groupId: string } }) => {
                   </>
                 );
               })}
+            <MemeberCard mt={3} userCode={'1'} userName={'김의찬'} icon={<CheckIcon />} />
+            <MemeberCard mt={3} userCode={'7'} userName={'엘론'} icon={<CheckIcon />} />
+            <MemeberCard mt={3} userCode={'8'} userName={'참치'} icon={<CheckIcon />} />
           </Stack>
           <MyButton
             color="negative"

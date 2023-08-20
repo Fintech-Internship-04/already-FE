@@ -74,6 +74,9 @@ const TeamInfo = ({ params }: { params: { groupId: string } }) => {
                   />
                 );
               })}
+              <MemeberCard mt={3} userCode={'1'} userName={'김의찬'} />
+              <MemeberCard mt={3} userCode={'7'} userName={'엘론'} />
+              <MemeberCard mt={3} userCode={'8'} userName={'참치'} />
             </Grid>
           </Box>
           <Box mt={4}>
