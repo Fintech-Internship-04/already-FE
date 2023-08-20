@@ -1,4 +1,9 @@
-const MyButton = ({ size = 'M', color = 'default', text, onClick }) => {
+const MyButton = ({
+  size = 'M',
+  color = 'default',
+  text = '',
+  onClick = () => console.log('hi'),
+}) => {
   /**
    * 사용예
    * <MyButton size="L" color="positive" text="Positive Button" onClick={() => console.log("Positive clicked")} />

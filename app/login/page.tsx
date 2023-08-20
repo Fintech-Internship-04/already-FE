@@ -21,9 +21,11 @@ const Login = () => {
     const response = await authApis.login({ id: userId, password: userPw });
     console.log(response);
     if (response.ok) {
-      localStorage.setItem('currentUserName', response.data?.data.user_name);
-      localStorage.setItem('currentUserCode', response.data?.data.user_code);
-      router.push('/enrollAccount');
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('currentUserName', response.data?.data.user_name);
+        window.localStorage.setItem('currentUserCode', response.data?.data.user_code);
+        router.push('/enrollAccount');
+      }
     } else {
       setHasError(true);
     }

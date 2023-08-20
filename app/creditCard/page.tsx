@@ -1,24 +1,11 @@
 'use client';
 
-import { Box, Flex } from '@chakra-ui/react';
+import { CalendarIcon } from '@chakra-ui/icons';
+import { Text, Flex, Table, Thead, Tbody, Tr, Th, Td, TableContainer } from '@chakra-ui/react';
 
 import AppContainer from '@/components/common/AppContainer';
-import Navbar from '@/components/common/NavBar';
-import Header from '@/components/home/Header';
 import BackBar from '@/components/common/BackBar';
-import { Text } from '@chakra-ui/react';
-import { CalendarIcon } from '@chakra-ui/icons';
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-} from '@chakra-ui/react';
+import Navbar from '@/components/common/NavBar';
 
 const CreditCard = () => {
   return (

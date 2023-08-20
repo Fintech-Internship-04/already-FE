@@ -20,7 +20,6 @@ import TeamAccept from './teamaccept/page';
 const Home = () => {
   const [isClickOn, setIsClickOn] = useState(false);
   const [groupList, setGroupList] = useState<any>([]);
-  const userCode = localStorage.getItem('currentUserCode');
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -28,6 +27,8 @@ const Home = () => {
     router.push('/makeTeam');
   };
   useEffect(() => {
+    const userCode = window.localStorage.getItem('currentUserCode');
+
     if (!userCode) {
       router.push('/login');
     }

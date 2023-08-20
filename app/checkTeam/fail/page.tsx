@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Flex, Stack, Text } from '@chakra-ui/react';
 
@@ -26,12 +26,13 @@ const FailText: React.FC<FailTextProps> = ({ price }) => {
 const CheckTeamFail = () => {
   const [cardList, setCardList] = useState(fakeCardList);
 
-  // useEffect(() => {
-  //   async function () => {
-  // const response = await axios~~~
-  //   멤버 정보 받아오는 api
-  //   }
-  // },[])
+  useEffect(() => {
+    //   async function () => {
+    // const response = await axios~~~
+    //   멤버 정보 받아오는 api
+    //   }
+    setCardList([1, 2, 3, 4, 5]);
+  }, []);
   return (
     <AppContainer>
       <BackGroundCard>
@@ -45,16 +46,11 @@ const CheckTeamFail = () => {
             </Text>
           </Flex>
           <Stack my={13} mb={10} h={'410px'} overflow={'scroll'}>
-            {cardList.map((el, index) => {
+            {cardList.map((el) => {
               return (
                 <>
-                  <MemeberCard key={index} mt={3} userCode="user code" icon={<CheckIcon />} />
-                  <MemeberCard
-                    key={index}
-                    mt={3}
-                    userCode="user code"
-                    icon={<FailText price={5000} />}
-                  />
+                  <MemeberCard key={el} mt={3} userCode="user code" icon={<CheckIcon />} />
+                  <MemeberCard mt={3} userCode="user code" icon={<FailText price={5000} />} />
                 </>
               );
             })}

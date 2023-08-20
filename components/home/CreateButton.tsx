@@ -1,7 +1,6 @@
 import { Flex, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
-
 import PlusIcon from '../icons/PlusIcon';
 
 const CreateButton = ({ ...props }) => {
