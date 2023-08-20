@@ -17,6 +17,10 @@ const groupApis = {
     const response = await client.post(`${PATH}group/createGroup`, data);
     return response;
   }),
+  checkInvite: methodFormat(async (userCode) => {
+    const response = await client.get(`${PATH}group/checkInvite/${userCode}`);
+    return response;
+  }),
 };
 
 export default groupApis;

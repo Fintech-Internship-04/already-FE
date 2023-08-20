@@ -57,7 +57,7 @@ const MakeTeam = () => {
   const [groupName, setGroupName] = useState('');
   // 추가한 멤버
   const [memberList, setMemberList] = useState<any>([]);
-  const [currentUser, setCurrentUser] = useState({ user_name: 'test', user_code: 77 });
+  const [currentUser, setCurrentUser] = useState<any>({});
   const [headCount, setHeadCount] = useState(0);
   // 전체 유저
   const [allUsers, setAllUsers] = useState<any>([]);
@@ -116,6 +116,10 @@ const MakeTeam = () => {
   }, [displayCount, allUsers]);
 
   useEffect(() => {
+    setCurrentUser({
+      user_name: localStorage.getItem('currentUserName'),
+      user_code: localStorage.getItem('currentUserCode'),
+    });
     const fetchMembers = async () => {
       const response = await memberApis.getButtonMembers();
       console.log(33, response);

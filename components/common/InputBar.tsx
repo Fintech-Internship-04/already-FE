@@ -6,13 +6,14 @@ interface InputBarProps {
   icon: JSX.Element; // JSX.Element 타입으로 icon을 받기
   placeholder: string;
   handleChange?: React.ChangeEventHandler<HTMLInputElement>;
+  type?: string;
 }
 
-const InputBar: React.FC<InputBarProps> = ({ icon, placeholder, handleChange }) => {
+const InputBar: React.FC<InputBarProps> = ({ icon, placeholder, handleChange, type = 'text' }) => {
   return (
     <InputGroup size="lg" width="315px" height="48px" backgroundColor="#F7F8F8" borderRadius="14px">
       <InputLeftElement pointerEvents="none">{icon}</InputLeftElement>
-      <Input type="text" onChange={handleChange} placeholder={placeholder} border="none" />
+      <Input type={type} onChange={handleChange} placeholder={placeholder} border="none" />
     </InputGroup>
   );
 };
