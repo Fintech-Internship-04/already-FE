@@ -42,7 +42,7 @@ const CreditCard = () => {
         >
           <Text textStyle={'subtitle1'}>날짜순</Text>
           <Text textStyle={'subtitle1'} ml={'40px'}>
-            23/08/10
+            23/08/20
           </Text>
           <CalendarIcon boxSize={6} />
         </Flex>
@@ -57,30 +57,23 @@ const CreditCard = () => {
               </Tr>
             </Thead>
             <Tbody>
+              {/* case3 */}
               <Tr>
-                <Td>08/10</Td>
-                <Td>냠냠막창</Td>
-                <Td isNumeric>58,000</Td>
+                <Td>8/20 13:03</Td>
+                <Td>맥도날드</Td>
+                <Td isNumeric>350,000</Td>
               </Tr>
+              {/* case2 */}
               <Tr>
-                <Td>08/05</Td>
-                <Td>마라탕</Td>
-                <Td isNumeric>69,000</Td>
+                <Td>8/20 13:02</Td>
+                <Td>엽기떡볶이</Td>
+                <Td isNumeric>350,000</Td>
               </Tr>
+              {/* case1 */}
               <Tr>
-                <Td>08/15</Td>
+                <Td>8/20 13:01</Td>
                 <Td>두끼</Td>
-                <Td isNumeric>46,000</Td>
-              </Tr>
-              <Tr>
-                <Td>08/10</Td>
-                <Td>엽떡</Td>
-                <Td isNumeric>46,000</Td>
-              </Tr>
-              <Tr>
-                <Td>08/10</Td>
-                <Td>배고파</Td>
-                <Td isNumeric>80,000</Td>
+                <Td isNumeric>10,000</Td>
               </Tr>
             </Tbody>
           </Table>
