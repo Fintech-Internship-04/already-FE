@@ -24,6 +24,7 @@ const TeamAccept = ({ groupId, onClose }: { groupId: number; onClose: any }) => 
     });
     if (response.ok) {
       router.push('/');
+      onClose();
     }
   };
   useEffect(() => {
