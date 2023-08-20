@@ -19,6 +19,9 @@ const PaymentAccept: React.FC<PaymentProps> = ({ onClose }) => {
   const router = useRouter();
   const acceptPay = async () => {
     const response = await groupApis.calculatePayment(userCode);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('isRequest', 'false');
+    }
     router.push('/');
     onClose();
     console.log('accept', response);
