@@ -72,7 +72,7 @@ const Home = () => {
     fetchGroupList(Number(localStorage.getItem('currentUserCode')));
     // Set an interval to fetch the data every second
     const intervalId = setInterval(fetchData, 2000);
-    const intervalId2 = setInterval(fetchPay, 2000);
+    const intervalId2 = setInterval(fetchPay, 4000);
 
     // Clear the interval when the component is unmounted
     return () => {

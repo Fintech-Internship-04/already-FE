@@ -20,6 +20,7 @@ const PaymentAccept: React.FC<PaymentProps> = ({ onClose }) => {
   const acceptPay = async () => {
     const response = await groupApis.calculatePayment(userCode);
     router.push('/');
+    onClose();
     console.log('accept', response);
   };
   useEffect(() => {

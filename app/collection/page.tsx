@@ -17,7 +17,7 @@ const Collection = () => {
           <Text mb={'15px'}>Today</Text>
           <Flex flexDir={'column'} gap={'20px'}>
             {/* case3 */}
-            <AlertCard
+            {/* <AlertCard
               type="PaymentFail"
               time="3분전"
               groupName="4조"
@@ -27,24 +27,24 @@ const Collection = () => {
             <AlertCard time="3분전" groupName="4조" member="최지갑님" groupNum="3" />
 
             {/* case2 */}
-            <AlertCard
+            {/* <AlertCard
               type="PaymentRequest"
               time="4분전"
               groupName="냐미모임"
               member="김의찬님"
               groupNum="7"
             />
-            <AlertCard time="4분전" groupName="냐미모임" member="김의찬님" groupNum="7" />
+            <AlertCard time="4분전" groupName="냐미모임" member="김의찬님" groupNum="7" /> */}
 
             {/* case1 */}
             <AlertCard
               type="PaymentRequest"
-              time="5분전"
-              groupName="냠냠모임"
-              member="이참치님"
+              time="1분전"
+              groupName="뿜빠야조"
+              member="이준석"
               groupNum="5"
             />
-            <AlertCard time="3분전" groupName="4조" member="최지갑님" groupNum="3" />
+            <AlertCard time="2분전" groupName="뿜빠야조" member="이준석" groupNum="5" />
           </Flex>
           <Divider mt={'20px'} mb={'20px'} />
         </Flex>
