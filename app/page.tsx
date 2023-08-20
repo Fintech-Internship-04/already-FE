@@ -54,13 +54,17 @@ const Home = () => {
       }
     };
     const fetchPay = async () => {
+      let isRequest;
+      if (typeof window !== 'undefined') {
+        isRequest = localStorage.getItem('isRequest');
+      }
       const response = await memberApis.getIsRequest(
         Number(localStorage.getItem('currentUserCode')),
       );
       // isRequest가 1인지 판단해서 알림을 띄워줄거임
       console.log('is1', response);
       if (response.data) {
-        if (response.data.data) {
+        if (response.data.data && !isRequest) {
           onOpen();
           setIsInvite(false);
         }
