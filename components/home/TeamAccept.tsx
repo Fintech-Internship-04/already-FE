@@ -56,9 +56,10 @@ const TeamAccept = ({ groupId, onClose }: { groupId: number; onClose: any }) => 
           <Text textStyle={'headline2'}>{groupInfo.group_name}</Text>
           <Text textStyle={'body3'}>멤버 리스트</Text>
           <Divider mt={2} />
-          {groupInfo.user_list.map((el: { user_name: Key | null | undefined }) => {
-            return <MemeberCard key={el.user_name} mt={3} />;
-          })}
+          {groupInfo.user_list &&
+            groupInfo.user_list.map((el: { user_name: Key | null | undefined }) => {
+              return <MemeberCard key={el.user_name} mt={3} />;
+            })}
           <MyButton size="L" text="모임수락" onClick={acceptGroup} />
           <MyButton size="L" color="negative" text="거절하기" onClick={onClose} />
         </Flex>
