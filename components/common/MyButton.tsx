@@ -34,6 +34,7 @@ const MyButton = ({
       case 'disabled':
         return {
           background: '#ADA4A5',
+          disabled: true,
         };
       default:
         return {
@@ -59,7 +60,7 @@ const MyButton = ({
         alignItems: 'center',
       }}
       onClick={onClick}
-      // disabled={true}
+      //disabled={color === 'disabled' ? true : false}
     >
       {text}
     </button>

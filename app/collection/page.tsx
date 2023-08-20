@@ -1,8 +1,6 @@
 'use client';
 import { Text, Flex } from '@chakra-ui/react';
 
-import { Text, Flex } from '@chakra-ui/react';
-
 import AlertCard from '@/components/common/AlertCard';
 import AppContainer from '@/components/common/AppContainer';
 import BackBar from '@/components/common/BackBar';

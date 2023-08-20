@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Box, Flex, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
@@ -15,21 +15,25 @@ import LogoSmall from '@/components/icons/LogoSmall';
 const Login = () => {
   const [userId, setUserId] = useState('');
   const [userPw, setUserPw] = useState('');
+  const [buttonType, setButtonType] = useState('default');
   const [hasError, setHasError] = useState(false);
   const router = useRouter();
   const handleLogin = async () => {
     const response = await authApis.login({ id: userId, password: userPw });
     console.log(response);
     if (response.ok) {
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem('currentUserName', response.data?.data.user_name);
-        window.localStorage.setItem('currentUserCode', response.data?.data.user_code);
-        router.push('/enrollAccount');
-      }
+      localStorage.setItem('currentUserName', response.data?.data.user_name);
+      localStorage.setItem('currentUserCode', response.data?.data.user_code);
+      router.push('/enrollAccount');
     } else {
       setHasError(true);
     }
   };
+
+  useEffect(() => {
+    //입력값 유효성 검사-> 버튼 활성화
+    userId.length >= 1 && userPw.length >= 1 ? setButtonType('default') : setButtonType('disabled');
+  }, [userId, userPw]);
   return (
     <AppContainer>
       <Stack gap={9} mt={'120px'} align={'center'}>
@@ -55,7 +59,7 @@ const Login = () => {
             </Text>
           )}
         </Box>
-        <MyButton size="L" text="로그인" onClick={handleLogin} />
+        <MyButton color={buttonType} size="L" text="로그인" onClick={handleLogin} />
         <Flex align={'center'}>
           <Text color={'#A0AEC0'} textStyle={'caption2'}>
             아직

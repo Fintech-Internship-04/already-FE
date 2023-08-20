@@ -18,6 +18,7 @@ const Signup = () => {
   const [inputValues, setInputValues] = useState<any>({});
   const [hasError, setHasError] = useState(false);
   const [isPwConfirmed, setIsPwConfirmed] = useState(false);
+  const [buttonType, setButtonType] = useState('default');
   useEffect(() => {
     if (inputValues.password !== inputValues.passwordConfirm) {
       setIsPwConfirmed(true);
@@ -26,6 +27,13 @@ const Signup = () => {
     }
     !allKeysHaveValues(inputValues) || !isPwConfirmed ? setHasError(true) : setHasError(false);
     console.log(!allKeysHaveValues(inputValues) || !isPwConfirmed);
+  }, [inputValues]);
+  useEffect(() => {
+    //입력값 유효성 검사-> 버튼 활성화
+    console.log(inputValues.user_id);
+    inputValues.user_id !== '' && inputValues.password !== '' && inputValues.user_name !== ''
+      ? setButtonType('default')
+      : setButtonType('disabled');
   }, [inputValues]);
   const router = useRouter();
   const handleSignup = async () => {
@@ -86,7 +94,7 @@ const Signup = () => {
             );
           })}
         </Box>
-        <MyButton size="L" text="회원가입" onClick={handleSignup} />
+        <MyButton color={buttonType} size="L" text="회원가입" onClick={handleSignup} />
       </Stack>
     </AppContainer>
   );
