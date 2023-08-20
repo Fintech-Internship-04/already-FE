@@ -21,8 +21,9 @@ const Login = () => {
     const response = await authApis.login({ id: userId, password: userPw });
     console.log(response);
     if (response.ok) {
-      // localStorage.setItem('currentUser',{})
-      router.push('/');
+      localStorage.setItem('currentUserName', response.data?.data.user_name);
+      localStorage.setItem('currentUserCode', response.data?.data.user_code);
+      router.push('/enrollAccount');
     } else {
       setHasError(true);
     }
@@ -42,6 +43,7 @@ const Login = () => {
             <InputBar
               icon={<AvatarIcon />}
               placeholder="Password"
+              type="password"
               handleChange={(e) => setUserPw(e.target.value)}
             />
           </Box>

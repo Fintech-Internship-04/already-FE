@@ -1,7 +1,6 @@
-import { Flex } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
-import { Text } from '@chakra-ui/react';
 import { CloseIcon, InfoOutlineIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Flex, Button, Text } from '@chakra-ui/react';
+
 import GroupIcon from '../icons/GroupIcon';
 const AlertCard = ({ type = 'TeamRequest' }) => {
   //TeamRequest, PaymentRequest
