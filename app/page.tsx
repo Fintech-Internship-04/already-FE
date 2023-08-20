@@ -22,7 +22,7 @@ const Home = () => {
   const [groupList, setGroupList] = useState<any>([]);
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [groupId, setGroupId] = useState<number>(0);
   const handleRouter = () => {
     router.push('/makeTeam');
   };
@@ -35,10 +35,11 @@ const Home = () => {
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await groupApis.checkInvite(userCode);
-        console.log(response);
+        const response = await groupApis.checkInvite(3);
+        console.log('isInvited', response);
         if (response.data) {
           if (response.data.data[0].is_invited) {
+            setGroupId(response.data.data[0].invited_from);
             onOpen();
           }
         }
@@ -96,7 +97,7 @@ const Home = () => {
         </Grid>
       </Stack>
       <Box h={16} />
-      <ModalCard content={<TeamAccept />} isOpen={isOpen} onClose={onClose} />
+      <ModalCard content={<TeamAccept groupId={groupId} />} isOpen={isOpen} onClose={onClose} />
       <Navbar />
     </AppContainer>
   );

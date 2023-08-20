@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { Box, Flex, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Stack, Text, Image } from '@chakra-ui/react';
 
 import AppContainer from '@/components/common/AppContainer';
 import BackGroundCard from '@/components/common/BackGroundCard';
@@ -36,7 +36,7 @@ const CheckTeamFail = () => {
               친구의 정산여부
             </Text>
           </Flex>
-          <Stack my={13} mb={10} h={'410px'} overflow={'scroll'}>
+          <Stack my={13} mb={0} h={'410px'} overflow={'scroll'}>
             {cardList.map((el) => {
               return (
                 <>
@@ -45,6 +45,7 @@ const CheckTeamFail = () => {
               );
             })}
           </Stack>
+          <Image src="/찌개마을.png" alt="Dan Abramov" />
           <MyButton text="확인" onClick={() => console.log('Positive clicked')} />
         </Stack>
       </BackGroundCard>

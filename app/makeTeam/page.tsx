@@ -71,12 +71,14 @@ const MakeTeam = () => {
     });
     const response = await groupApis.createGroup({
       group_name: groupName,
-      user_code: currentUser.user_code,
+      user_code: Number(currentUser.user_code),
       headcount: headCount,
       user_list: memberList,
     });
     if (response.ok) {
-      router.push('/teamInfo');
+      if (response.data) {
+        router.push(`/teamInfo/${response.data.data}`);
+      }
     }
     console.log(response);
   };

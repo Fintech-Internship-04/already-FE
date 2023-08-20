@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useState, useEffect } from 'react';
 
-import { Flex, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Stack, Text } from '@chakra-ui/react';
 
+import groupApis from '@/api/group';
 import AppContainer from '@/components/common/AppContainer';
 import BackGroundCard from '@/components/common/BackGroundCard';
 import MemeberCard from '@/components/common/MemberCard';
@@ -23,9 +25,22 @@ const FailText: React.FC<FailTextProps> = ({ price }) => {
     </Flex>
   );
 };
-const CheckTeamFail = () => {
+const CheckTeamFail = ({ params }: { params: { groupId: string } }) => {
   const [cardList, setCardList] = useState(fakeCardList);
+  const [groupInfo, setGroupInfo] = useState<any>({});
 
+  const { groupId } = params;
+
+  useEffect(() => {
+    const fetchGroupInfo = async () => {
+      const response = await groupApis.getGroupInfo(groupId);
+      console.log('fetch', response);
+      if (response.data) {
+        setGroupInfo(response.data.data);
+      }
+    };
+    fetchGroupInfo();
+  }, []);
   useEffect(() => {
     //   async function () => {
     // const response = await axios~~~
@@ -35,6 +50,7 @@ const CheckTeamFail = () => {
   }, []);
   return (
     <AppContainer>
+      <Box mt={12} />
       <BackGroundCard>
         <Stack gap={6} align={'center'}>
           <Flex w={'full'} justify={'flex-end'} align={'flex-end'}>
