@@ -1,37 +1,48 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 
 import { Box, Flex, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
-import authApis from '@/api/authentication';
 import AppContainer from '@/components/common/AppContainer';
-import InputBar from '@/components/common/InputBar';
 import MyButton from '@/components/common/MyButton';
-import AvatarIcon from '@/components/icons/AvatarIcon';
-import Logo from '@/components/icons/Logo';
-import LogoSmall from '@/components/icons/LogoSmall';
 import Navbar from '@/components/common/NavBar';
-import { Select } from '@chakra-ui/react';
+import Logo from '@/components/icons/Logo';
 
 const MyInfo = () => {
-  const [userId, setUserId] = useState('');
-  const [userPw, setUserPw] = useState('');
-  const [hasError, setHasError] = useState(false);
+  const [name, setName] = useState('이름');
+  const [id, setId] = useState('아이디');
+  const [phoneNum, setPhoneNum] = useState('');
+  const [userCode, setUserCode] = useState('유저코드');
+  const [account, setAccount] = useState(['1', '2', '3']);
+
   const router = useRouter();
   const handleLogout = async () => {
     router.push('/');
   };
 
-  let data = {
-    name: '이은비',
-    id: 'silverain',
-    phoneNum: '01074635295',
-    userCode: 'abcdefg',
+  const data = {
+    name: name,
+    id: id,
+    phoneNum: phoneNum,
+    userCode: userCode,
     //게좌데이터
-    account: ['신안 12345678', '궁민 12345678', '토수 12345678'],
+    account: account,
   };
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 localStorage에서 값을 가져옴
+    const savedName = localStorage.getItem('currentUserName');
+    const savedCode = localStorage.getItem('currentUserCode');
+    setName(savedName);
+    setId('silverain');
+    setUserCode(savedCode);
+    setPhoneNum('01074635295');
+    setAccount(['신안 110514186097', '궁민 620602013868', '토수 3333169044108']);
+  }, []);
+
   return (
     <AppContainer>
       <Box borderRadius={'10px'} bg={'#F7F8F8'} w={'full'} pb={'30px'} my={'47px'} px={6} py={4}>

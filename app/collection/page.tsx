@@ -1,16 +1,14 @@
 'use client';
 
-import { Box } from '@chakra-ui/react';
+import { Text, Flex } from '@chakra-ui/react';
 
+import AlertCard from '@/components/common/AlertCard';
 import AppContainer from '@/components/common/AppContainer';
-import Navbar from '@/components/common/NavBar';
-import Header from '@/components/home/Header';
 import BackBar from '@/components/common/BackBar';
 import BackGroundCard from '@/components/common/BackGroundCard';
-import { Text } from '@chakra-ui/react';
-import { Flex } from '@chakra-ui/react';
 import Divider from '@/components/common/Divider';
-import AlertCard from '@/components/common/AlertCard';
+import Navbar from '@/components/common/NavBar';
+
 const Collection = () => {
   return (
     <AppContainer>
